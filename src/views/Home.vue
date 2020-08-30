@@ -14,17 +14,23 @@
             <b>
               <!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
               <!-- Dark Logo icon -->
-              <img src="@/assets/images/logo-icon.png" alt="homepage" class="dark-logo" />
+              <img src="@/assets/images/bot.png" alt="homepage" class="dark-logo" />
               <!-- Light Logo icon -->
-              <img src="@/assets/images/logo-light-icon.png" alt="homepage" class="light-logo" />
+              <img src="@/assets/images/bot.png" alt="homepage" class="light-logo" />
             </b>
             <!--End Logo icon -->
             <!-- Logo text -->
             <span>
               <!-- dark Logo text -->
-              <img src="@/assets/images/logo-text.png" alt="homepage" class="dark-logo" />
+              <img
+                src="@/assets/images/texto.png"
+                width="10px"
+                height="10px"
+                alt="homepage"
+                class="dark-logo"
+              />
               <!-- Light Logo text -->
-              <img src="@/assets/images/logo-light-text.png" class="light-logo" alt="homepage" />
+              <img src="@/assets/images/texto.png" class="light-logo" alt="homepage" />
             </span>
           </a>
         </div>
@@ -199,7 +205,7 @@
                         <a href="javascript:void(0)">
                           <span>
                             KAREN AURORA BONILLA RAMOS
-                            <span class="text-success font-18">SMIS090816</span>
+                            <span class="text-success font-18">SMIS039828</span>
                           </span>
                         </a>
                       </li>
@@ -216,31 +222,31 @@
                   </div>
                   <div class="chat-rbox" style="top:150px">
                     <ul class="chat-list p-20">
-                      <div v-if="mensajes.length===0" class="text-center">
+                      <div v-if="mensajes.length === 0" class="text-center">
                         <h1>NO HAY MENSAJE</h1>
                       </div>
 
                       <div v-for="(mensaje, index) in mensajes" :key="index">
-                        <li v-if="mensaje.tipo===1">
+                        <li v-if="mensaje.tipo === 1">
                           <div class="chat-img">
                             <img src="@/assets/images/users/1.jpg" alt="user" />
                           </div>
                           <div class="chat-content">
                             <h5>BOT EMERGENTES</h5>
-                            <div class="box bg-light-info">{{mensaje.mensaje}}</div>
+                            <div class="box bg-light-info">{{ mensaje.mensaje }}</div>
                           </div>
-                          <div class="chat-time">{{mensaje.hora}}</div>
+                          <div class="chat-time">{{ mensaje.hora }}</div>
                         </li>
 
-                        <li v-if="mensaje.tipo===2" class="reverse">
+                        <li v-if="mensaje.tipo === 2" class="reverse">
                           <div class="chat-content">
                             <h5>USUARIO</h5>
-                            <div class="box bg-light-inverse">{{mensaje.mensaje}}</div>
+                            <div class="box bg-light-inverse">{{ mensaje.mensaje }}</div>
                           </div>
                           <div class="chat-img">
                             <img src="@/assets/images/users/5.jpg" alt="user" />
                           </div>
-                          <div class="chat-time">{{mensaje.hora}}</div>
+                          <div class="chat-time">{{ mensaje.hora }}</div>
                         </li>
                       </div>
                     </ul>
