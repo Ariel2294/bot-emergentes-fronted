@@ -198,7 +198,7 @@
                       <li>
                         <a href="javascript:void(0)">
                           <span>
-                            KAREN AUROTA BONILLA RAMOS
+                            KAREN AURORA BONILLA RAMOS
                             <span class="text-success font-18">SMIS090816</span>
                           </span>
                         </a>
