@@ -79,7 +79,7 @@
         <div class="user-profile">
           <!-- User profile image -->
           <div class="profile-img">
-            <img src="@/assets/images/users/profile.png" alt="user" />
+            <img src="@/assets/images/bot/ugb.png" alt="user" />
             <!-- this is blinking heartbit-->
             <div class="notify setpos">
               <span class="heartbit"></span>
@@ -237,9 +237,20 @@
                       </div>
 
                       <div v-for="(mensaje, index) in mensajes" :key="index">
-                        <li v-if="mensaje.tipo === 1">
+                        <li v-if="mensaje.tipo === 2" class="reverse">
+                          <div class="chat-content">
+                            <h5>USUARIO</h5>
+                            <div class="box bg-light-inverse">{{ mensaje.mensaje }}</div>
+                          </div>
                           <div class="chat-img">
-                            <img src="@/assets/images/users/1.jpg" alt="user" />
+                            <img src="@/assets/images/bot/user.png" alt="user" />
+                          </div>
+                          <div class="chat-time">{{ mensaje.hora }}</div>
+                        </li>
+
+                        <li v-if="mensaje.tipo === 1 && valor===true">
+                          <div class="chat-img">
+                            <img src="@/assets/images/bot/bot.png" alt="user" />
                           </div>
                           <div class="chat-content">
                             <h5>BOT EMERGENTES</h5>
@@ -247,18 +258,17 @@
                           </div>
                           <div class="chat-time">{{ mensaje.hora }}</div>
                         </li>
-
-                        <li v-if="mensaje.tipo === 2" class="reverse">
-                          <div class="chat-content">
-                            <h5>USUARIO</h5>
-                            <div class="box bg-light-inverse">{{ mensaje.mensaje }}</div>
-                          </div>
-                          <div class="chat-img">
-                            <img src="@/assets/images/users/5.jpg" alt="user" />
-                          </div>
-                          <div class="chat-time">{{ mensaje.hora }}</div>
-                        </li>
                       </div>
+                      <li v-if=" valor===false && enviado===true">
+                        <div class="chat-img">
+                          <img src="@/assets/images/bot/bot.png" alt="user" />
+                        </div>
+                        <div class="chat-content">
+                          <h5>BOT EMERGENTES</h5>
+                          <div class="box bg-light-info">Escribiendo...</div>
+                        </div>
+                        <div class="chat-time">ahora..</div>
+                      </li>
                     </ul>
                   </div>
                   <div class="card-body b-t">
@@ -328,12 +338,19 @@ export default {
     return {
       mensajes: [],
       texto: "",
+      valor: true,
+      enviado: false,
     };
   },
   methods: {
     getMensajes() {
       this.axios.get(`${process.env.VUE_APP_API}mensajes`).then((result) => {
         this.mensajes = result.data;
+
+        setTimeout(() => {
+          this.valor = true;
+          this.enviado = false;
+        }, 2000);
       });
     },
     sendMensaje() {
@@ -347,6 +364,8 @@ export default {
             if (result.status === 201) {
               this.texto = "";
               this.getMensajes();
+              this.valor = false;
+              this.enviado = true;
               this.$refs.caja.focus();
             }
           });
@@ -361,6 +380,16 @@ export default {
   },
   mounted() {
     this.$refs.caja.focus();
+  },
+  computed: {
+    timer: () => {
+      let valor;
+      setTimeout(() => {
+        valor = true;
+      }, 500);
+
+      return valor;
+    },
   },
 };
 </script>
