@@ -227,7 +227,7 @@
                 <div class="chat-right-aside top">
                   <div class="chat-main-header">
                     <div class="p-20 b-b">
-                      <h3 class="box-title">Chat Message</h3>
+                      <h3 class="box-title">Chat</h3>
                     </div>
                   </div>
                   <div class="chat-rbox" style="top:150px">
